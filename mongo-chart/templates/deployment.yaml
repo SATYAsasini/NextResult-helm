@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbdeployment
+  labels:
+    app: nextmongo
+spec:
+  replicas: {{ .Values.dbDeployment.replicas}}
+  selector: 
+    matchLabels:
+      app: nextmongo
+  template:
+    metadata: 
+      labels:
+        app: nextmongo
+    spec:
+      containers:
+      - name: nextmongo
+        image: {{ .Values.dbDeployment.image.repository }}:{{ .Values.dbDeployment.image.tag }}
+        ports:
+        - containerPort: {{ .Values.dbDeployment.service.containerPort }}
+

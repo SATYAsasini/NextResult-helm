@@ -1,0 +1,17 @@
+appdeployment:
+  image:
+    repository: satyasasini/next-resultzz
+    tag: health-check2
+  service:
+    name: appdeployment
+    labels:
+      app: appdeployment
+    containerPort: 3000
+
+env:
+  - name: PORT
+    value: "3000"
+  - name: MONGODB_URL
+    value: "mongodb://dbservice:27017"
+  - name: SECRET
+    value: "VASCODAGAMA"
